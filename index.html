@@ -15,10 +15,20 @@
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-      <a-entity mindar-image-target="targetIndex: 0">
-        <!-- Modelin marker üzerinde görünmesi için pozisyon ayarlandı -->
-        <a-gltf-model src="#cowModel" position="0 0 0.5" scale="0.1 0.1 0.1" rotation="0 0 0"></a-gltf-model>
+
+      <!-- Marker ile tarama -->
+      <a-entity mindar-image-target="targetIndex: 0" id="markerTarget">
+        <a-gltf-model id="cowModelEntity" src="#cowModel" position="0 0 0.5" scale="0.1 0.1 0.1" rotation="0 0 0"></a-gltf-model>
       </a-entity>
     </a-scene>
+
+    <script>
+      // Marker bulunduğunda modeli kalıcı yap
+      document.querySelector('#markerTarget').addEventListener('targetFound', () => {
+        const model = document.querySelector('#cowModelEntity');
+        model.setAttribute('animation', 'property: position; to: 0 0 0.5; dur: 500');
+        document.querySelector('a-scene').appendChild(model.cloneNode(true)); // Modeli sahneye kalıcı olarak ekle
+      });
+    </script>
   </body>
 </html>
