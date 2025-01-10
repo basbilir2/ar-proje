@@ -5,15 +5,15 @@
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
-    <a-scene mindar-image="imageTargetSrc: https://basbilir2.github.io/ar-proje/targets.mind" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene mindar-image="imageTargetSrc: https://basbilir2.github.io/ar-proje/targets.mind; filterMinCF: 0.0001; filterBeta: 0.1" 
+             color-space="sRGB" 
+             renderer="colorManagement: true, physicallyCorrectLights" 
+             vr-mode-ui="enabled: false" 
+             device-orientation-permission-ui="enabled: false">
       <a-assets>
         <a-asset-item id="cowModel" src="https://basbilir2.github.io/ar-proje/cow.glb"></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-gltf-model src="#cowModel" position="0 0 0.1" scale="0.1 0.1 0.1" rotation="0 0 0"></a-gltf-model>
-      </a-entity>
-    </a-scene>
-  </body>
-</html>
+        <a-gltf-model src="#cowModel" position="0 0 0.1" scale="0.1 0.1 0.1" rotation="0 0 0
